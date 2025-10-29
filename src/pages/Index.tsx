@@ -31,123 +31,94 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-purple-950 to-gray-950">
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200">
-        <div className="container mx-auto px-6 py-5 flex justify-between items-center">
-          <div className="text-2xl font-semibold text-gray-900 tracking-tight">
+      <header className="fixed top-0 w-full z-50 bg-gray-950/80 backdrop-blur-lg border-b border-purple-500/20">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
             ChatPlace
           </div>
-          <nav className="hidden md:flex gap-8">
-            <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Возможности</a>
-            <a href="#how-it-works" className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Как работает</a>
-            <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Тарифы</a>
+          <nav className="hidden md:flex gap-6">
+            <a href="#features" className="text-gray-300 hover:text-purple-400 transition-colors">Возможности</a>
+            <a href="#how-it-works" className="text-gray-300 hover:text-purple-400 transition-colors">Как работает</a>
+            <a href="#pricing" className="text-gray-300 hover:text-purple-400 transition-colors">Тарифы</a>
           </nav>
-          <Button variant="outline" className="text-sm font-medium">
+          <Button variant="outline" className="border-purple-500 text-purple-400 hover:bg-purple-500/10">
             Войти
           </Button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="pt-40 pb-24 px-6">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-16">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 text-gray-900 tracking-tight animate-fade-in">
+      <section className="pt-32 pb-20 px-4">
+        <div className="container mx-auto max-w-5xl text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-orange-500 bg-clip-text text-transparent">
               ChatPlace
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-4 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              Сервис для быстрого роста в Instagram, Telegram и TikTok
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            Сервис для быстрого роста в Instagram, Telegram и TikTok
+          </p>
+
+          {/* Promo Banner */}
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 mb-8 animate-scale-in" style={{ animationDelay: '0.2s' }}>
+            <div className="text-sm uppercase tracking-wider text-purple-200 mb-3">
+              🎁 Только 3 дня!
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              7 ДНЕЙ НА ТАРИФЕ PREMIUM
+            </h2>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <span className="text-3xl line-through text-purple-200">25 000 ₽</span>
+              <Icon name="ArrowRight" size={32} className="text-white" />
+              <span className="text-4xl font-bold text-white">БЕСПЛАТНО</span>
+            </div>
+            <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg mb-6">
+              <span className="text-2xl font-mono font-bold text-white">ПРОМОКОД</span>
+            </div>
+
+            {/* Timer */}
+            <div className="flex justify-center gap-4 mb-8">
+              {[
+                { label: 'Дней', value: timeLeft.days },
+                { label: 'Часов', value: timeLeft.hours },
+                { label: 'Минут', value: timeLeft.minutes },
+                { label: 'Секунд', value: timeLeft.seconds }
+              ].map((item) => (
+                <div key={item.label} className="bg-white/10 backdrop-blur-sm rounded-lg p-4 min-w-[80px]">
+                  <div className="text-3xl font-bold text-white mb-1">{String(item.value).padStart(2, '0')}</div>
+                  <div className="text-xs text-purple-200 uppercase">{item.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-full font-bold shadow-2xl hover-scale">
+              Активировать промокод
+            </Button>
+            <p className="text-purple-100 mt-4 text-sm">
+              Возвращайся и протестируй максимум возможностей.<br />
+              Активируй промокод и начни тест уже сегодня
             </p>
           </div>
-
-          {/* Promo Card */}
-          <Card className="p-12 border-2 border-gray-900 shadow-lg animate-scale-in" style={{ animationDelay: '0.2s' }}>
-            <div className="text-center space-y-8">
-              <div className="inline-block px-4 py-2 bg-gray-100 rounded-full">
-                <span className="text-sm font-medium text-gray-700">🎁 Только 3 дня</span>
-              </div>
-
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-                  7 ДНЕЙ НА ТАРИФЕ PREMIUM
-                </h2>
-                <div className="flex items-center justify-center gap-4 text-3xl">
-                  <span className="line-through text-gray-400 font-medium">25 000 ₽</span>
-                  <Icon name="ArrowRight" size={28} className="text-gray-900" />
-                  <span className="font-bold text-gray-900">БЕСПЛАТНО</span>
-                </div>
-              </div>
-
-              <div className="inline-block px-8 py-4 bg-gray-900 rounded-2xl">
-                <span className="text-2xl font-mono font-bold text-white">ПРОМОКОД</span>
-              </div>
-
-              {/* Timer */}
-              <div className="flex justify-center gap-4">
-                {[
-                  { label: 'Дней', value: timeLeft.days },
-                  { label: 'Часов', value: timeLeft.hours },
-                  { label: 'Минут', value: timeLeft.minutes },
-                  { label: 'Секунд', value: timeLeft.seconds }
-                ].map((item) => (
-                  <div key={item.label} className="bg-gray-50 border border-gray-200 rounded-xl p-4 min-w-[90px]">
-                    <div className="text-4xl font-bold text-gray-900 mb-1">{String(item.value).padStart(2, '0')}</div>
-                    <div className="text-xs text-gray-500 uppercase font-medium tracking-wide">{item.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="space-y-3">
-                <Button size="lg" className="bg-gray-900 hover:bg-gray-800 text-white text-base px-10 py-6 rounded-full font-semibold">
-                  Активировать промокод
-                </Button>
-                <p className="text-gray-600 text-sm max-w-md mx-auto leading-relaxed">
-                  Возвращайся и протестируй максимум возможностей. Активируй промокод и начни тест уже сегодня
-                </p>
-              </div>
-            </div>
-          </Card>
         </div>
       </section>
 
       {/* Urgency Section */}
-      <section className="py-24 px-6 bg-gray-50">
+      <section className="py-20 px-4 bg-gradient-to-b from-transparent via-purple-900/20 to-transparent">
         <div className="container mx-auto max-w-6xl">
-          <div className="mb-16">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <div className="inline-block mb-6">
-                <div className="flex items-center gap-3 px-6 py-3 bg-red-50 border-2 border-red-200 rounded-full">
-                  <Icon name="AlertCircle" size={24} className="text-red-600" />
-                  <span className="text-sm font-bold text-red-900 uppercase tracking-wider">Срочно</span>
-                </div>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
-                Почему важно начать сейчас
-              </h2>
-              <p className="text-2xl text-gray-900 font-semibold mb-8">
-                Пока ты сомневаешься – конкуренты уже забирают ТВОЮ аудиторию
-              </p>
-            </div>
-
-            <div className="max-w-2xl mx-auto">
-              <div className="bg-white border-2 border-gray-200 rounded-3xl p-8 shadow-lg">
-                <p className="text-center text-lg text-gray-700 font-semibold mb-6">
-                  Каждый день без ChatPlace это:
-                </p>
-                <div className="grid gap-4">
-                  {[
-                    { icon: 'UserMinus', text: 'упущенные подписчики', color: 'bg-red-50 border-red-200 text-red-700' },
-                    { icon: 'XCircle', text: 'потерянные заявки', color: 'bg-orange-50 border-orange-200 text-orange-700' },
-                    { icon: 'TrendingDown', text: 'меньше доверие аудитории', color: 'bg-amber-50 border-amber-200 text-amber-700' }
-                  ].map((item, idx) => (
-                    <div key={idx} className={`flex items-center gap-4 p-4 ${item.color} border-2 rounded-2xl transition-transform hover:scale-105`}>
-                      <Icon name={item.icon} size={24} className="flex-shrink-0" />
-                      <span className="text-base font-semibold">{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Почему важно начать сейчас
+            </h2>
+            <p className="text-2xl text-orange-400 font-semibold mb-4">
+              Пока ты сомневаешься – конкуренты уже забирают ТВОЮ аудиторию
+            </p>
+            <p className="text-xl text-gray-400">Каждый день без ChatPlace это:</p>
+            <div className="flex flex-wrap justify-center gap-4 mt-4 text-lg text-red-400">
+              <span>❌ упущенные подписчики</span>
+              <span>❌ потерянные заявки</span>
+              <span>❌ меньше доверие аудитории</span>
             </div>
           </div>
 
@@ -155,44 +126,33 @@ export default function Index() {
             {[
               {
                 icon: 'Brain',
-                emoji: '🧠',
                 title: 'ИИ-агент 24/7',
                 subtitle: 'для Direct и комментариев',
-                description: 'Быстро обучается, понимает контекст и учитывает историю общения – 24/7, даже когда ты оффлайн',
-                gradient: 'from-violet-50 to-purple-50'
+                description: 'Быстро обучается, понимает контекст и учитывает историю общения – 24/7, даже когда ты оффлайн'
               },
               {
                 icon: 'Zap',
-                emoji: '⚡',
                 title: 'Автоматизация ответов',
                 subtitle: '',
-                description: 'Привлекай больше подписчиков с функциями проверки подписки и автоотправки бонусов',
-                gradient: 'from-blue-50 to-cyan-50'
+                description: 'Привлекай больше подписчиков с функциями проверки подписки и автоотправки бонусов'
               },
               {
                 icon: 'LayoutTemplate',
-                emoji: '📋',
                 title: 'Готовые шаблоны',
                 subtitle: '',
-                description: 'Используй сценарии, которые уже приносят подписчиков и настраиваются за 5 минут',
-                gradient: 'from-amber-50 to-orange-50'
+                description: 'Используй сценарии, которые уже приносят подписчиков и настраиваются за 5 минут'
               }
             ].map((card, idx) => (
-              <Card key={idx} className={`relative overflow-hidden p-8 border-2 hover:border-gray-900 hover:shadow-xl transition-all duration-300 bg-gradient-to-br ${card.gradient} animate-fade-in group`} style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className="absolute top-4 right-4 text-5xl opacity-20 group-hover:opacity-30 transition-opacity">{card.emoji}</div>
-                <div className="relative space-y-4">
-                  <div className="w-14 h-14 bg-gray-900 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Icon name={card.icon} size={28} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-1 tracking-tight">{card.title}</h3>
-                    {card.subtitle && <p className="text-gray-600 text-sm mb-3 font-medium">{card.subtitle}</p>}
-                    <p className="text-gray-700 leading-relaxed">{card.description}</p>
-                  </div>
-                  <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white font-medium group-hover:translate-y-0 translate-y-1 transition-transform">
-                    Активировать аккаунт
-                  </Button>
+              <Card key={idx} className="bg-gray-900/50 backdrop-blur-sm border-purple-500/30 p-6 hover:border-purple-500 transition-all hover-scale animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
+                <div className="bg-gradient-to-br from-purple-600 to-pink-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                  <Icon name={card.icon} size={32} className="text-white" />
                 </div>
+                <h3 className="text-2xl font-bold text-white mb-1">{card.title}</h3>
+                {card.subtitle && <p className="text-purple-400 mb-3">{card.subtitle}</p>}
+                <p className="text-gray-400 mb-4">{card.description}</p>
+                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                  Активировать аккаунт
+                </Button>
               </Card>
             ))}
           </div>
@@ -200,122 +160,120 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-24 px-6">
+      <section id="features" className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Что тебя ждет внутри
             </h2>
-            <p className="text-2xl text-gray-600">
+            <p className="text-2xl text-purple-400">
               Полный доступ. Без ограничений. Без "звёздочек"
             </p>
           </div>
 
-          <div className="space-y-4 mb-12">
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
             {[
               {
                 icon: 'Bot',
                 title: 'ИИ-агент 24/7 для Instagram, Telegram и TikTok',
-                description: 'Работает вместо вас – отвечает подписчикам, вовлекает, продаёт и возвращает клиентов',
-                color: 'bg-violet-100 text-violet-900'
+                description: 'Работает вместо вас – отвечает подписчикам, вовлекает, продаёт и возвращает клиентов'
               },
               {
                 icon: 'Workflow',
                 title: 'Автоматизации без лимитов',
-                description: 'Запускайте ИИ-агента, создавайте чат-боты, автоворонки, запускайте геймификации и рассылки – без ограничений',
-                color: 'bg-blue-100 text-blue-900'
+                description: 'Запускайте ИИ-агента, создавайте чат-боты, автоворонки, запускайте геймификации и рассылки – без ограничений'
               },
               {
                 icon: 'Share2',
                 title: 'Подключение всех соцсетей',
-                description: 'Свяжите свои аккаунты с ChatPlace – и управляйте коммуникацией с одной платформы',
-                color: 'bg-emerald-100 text-emerald-900'
+                description: 'Свяжите свои аккаунты с ChatPlace – и управляйте коммуникацией с одной платформы'
               },
               {
                 icon: 'BarChart3',
                 title: 'Аналитика и готовые шаблоны',
-                description: 'Следите за результатами, понимайте, что работает – и запускайте кампании в пару кликов с готовыми шаблонами',
-                color: 'bg-amber-100 text-amber-900'
+                description: 'Следите за результатами, понимайте, что работает – и запускайте кампании в пару кликов с готовыми шаблонами'
               },
               {
-                icon: 'Headphones',
+                icon: 'HeadphonesIcon',
                 title: 'Поддержка и обучение',
-                description: 'Мы поможем на каждом шаге: гайды, видео-уроки и живая поддержка',
-                color: 'bg-rose-100 text-rose-900'
+                description: 'Мы поможем на каждом шаге: гайды, видео-уроки и живая поддержка'
               }
             ].map((feature, idx) => (
-              <Card key={idx} className="p-8 border-2 hover:border-gray-900 hover:shadow-lg transition-all bg-white animate-fade-in group" style={{ animationDelay: `${idx * 0.05}s` }}>
-                <div className="flex items-start gap-6">
-                  <div className={`w-14 h-14 ${feature.color} rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
-                    <Icon name={feature.icon} size={28} />
+              <Card key={idx} className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-sm border-purple-500/30 p-6 hover:border-purple-500 transition-all animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
+                <div className="flex items-start gap-4">
+                  <div className="bg-gradient-to-br from-purple-600 to-pink-600 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Icon name={feature.icon} size={24} className="text-white" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight flex items-center gap-2">
-                      <Icon name="Check" size={20} className="text-green-600" />
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                      <Icon name="Check" size={20} className="text-green-400" />
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                    <p className="text-gray-400">{feature.description}</p>
                   </div>
                 </div>
               </Card>
             ))}
           </div>
 
-          <Card className="p-10 bg-gray-50 border-2">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 tracking-tight">Преимущества:</h3>
-            <div className="grid md:grid-cols-2 gap-4 text-gray-700">
-              {[
-                'Работает в любой нише',
-                'Охваты растут автоматически',
-                'ИИ-агент помогает вовлекать аудиторию',
-                'Шаблоны проверены тысячами пользователей'
-              ].map((text, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <Icon name="CheckCircle" size={20} className="text-gray-900 flex-shrink-0" />
-                  <span className="font-medium">{text}</span>
-                </div>
-              ))}
+          <div className="bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-2xl p-8 border border-purple-500/30">
+            <h3 className="text-2xl font-bold text-white mb-4">Преимущества:</h3>
+            <div className="grid md:grid-cols-2 gap-4 text-gray-300">
+              <div className="flex items-center gap-2">
+                <Icon name="CheckCircle" size={20} className="text-green-400" />
+                <span>Работает в любой нише</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="CheckCircle" size={20} className="text-green-400" />
+                <span>Охваты растут автоматически</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="CheckCircle" size={20} className="text-green-400" />
+                <span>ИИ-агент помогает вовлекать аудиторию</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="CheckCircle" size={20} className="text-green-400" />
+                <span>Шаблоны проверены тысячами пользователей</span>
+              </div>
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-24 px-6 bg-gray-50">
+      <section id="how-it-works" className="py-20 px-4 bg-gradient-to-b from-transparent via-purple-900/20 to-transparent">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Как это работает?
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
-              { step: '1', text: 'Настрой за 5 минут прямо с телефона', icon: 'Smartphone', bg: 'bg-violet-50', ring: 'ring-violet-200' },
-              { step: '2', text: 'Выбери шаблон или создай свой', icon: 'LayoutTemplate', bg: 'bg-blue-50', ring: 'ring-blue-200' },
-              { step: '3', text: 'Запусти и смотри, как ChatPlace собирает подписчиков и заявки', icon: 'TrendingUp', bg: 'bg-emerald-50', ring: 'ring-emerald-200' }
+              { step: '1', text: 'Настрой за 5 минут прямо с телефона', icon: 'Smartphone' },
+              { step: '2', text: 'Выбери шаблон или создай свой', icon: 'LayoutTemplate' },
+              { step: '3', text: 'Запусти и смотри, как ChatPlace собирает подписчиков и заявки', icon: 'TrendingUp' }
             ].map((item, idx) => (
-              <div key={idx} className="text-center space-y-6 animate-fade-in group" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className={`relative w-20 h-20 ${item.bg} rounded-3xl flex items-center justify-center mx-auto text-3xl font-bold text-gray-900 ring-4 ${item.ring} group-hover:scale-110 transition-transform`}>
+              <div key={idx} className="text-center animate-fade-in" style={{ animationDelay: `${idx * 0.15}s` }}>
+                <div className="bg-gradient-to-br from-purple-600 to-pink-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                   {item.step}
-                  <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-xl shadow-lg flex items-center justify-center border-2 border-gray-100">
-                    <Icon name={item.icon} size={20} className="text-gray-700" />
-                  </div>
                 </div>
-                <p className="text-lg text-gray-700 leading-relaxed font-medium">{item.text}</p>
+                <Icon name={item.icon} size={48} className="text-purple-400 mx-auto mb-4" />
+                <p className="text-lg text-gray-300">{item.text}</p>
               </div>
             ))}
           </div>
 
           {/* Growth Animation */}
-          <Card className="p-12 text-center border-2 bg-white">
-            <div className="text-7xl font-bold text-gray-900 mb-4 tracking-tight animate-scale-in">
+          <Card className="bg-gray-900/50 backdrop-blur-sm border-purple-500/30 p-8 text-center">
+            <div className="text-6xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent mb-4 animate-scale-in">
               +5000
             </div>
-            <p className="text-xl text-gray-600">новых подписчиков за первую неделю</p>
-            <div className="flex justify-center gap-2 mt-8">
+            <p className="text-xl text-gray-400">новых подписчиков за первую неделю</p>
+            <div className="flex justify-center gap-2 mt-6">
               {[...Array(5)].map((_, i) => (
-                <div key={i} className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: `${i * 0.2}s` }}></div>
+                <div key={i} className="w-2 h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: `${i * 0.2}s` }}></div>
               ))}
             </div>
           </Card>
@@ -323,45 +281,49 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 border-t border-gray-200 bg-white">
+      <footer className="py-12 px-4 border-t border-purple-500/20 bg-gray-950/50">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="text-2xl font-semibold text-gray-900 mb-4 tracking-tight">
+              <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-4">
                 ChatPlace
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-400 text-sm">
                 Сервис для автоматизации и роста в социальных сетях
               </p>
             </div>
             <div>
-              <h4 className="text-gray-900 font-semibold mb-4">Продукт</h4>
-              <ul className="space-y-3 text-gray-600 text-sm">
-                <li><a href="#" className="hover:text-gray-900 transition-colors">Возможности</a></li>
-                <li><a href="#" className="hover:text-gray-900 transition-colors">Тарифы</a></li>
-                <li><a href="#" className="hover:text-gray-900 transition-colors">Отзывы</a></li>
+              <h4 className="text-white font-semibold mb-3">Продукт</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#" className="hover:text-purple-400 transition-colors">Возможности</a></li>
+                <li><a href="#" className="hover:text-purple-400 transition-colors">Тарифы</a></li>
+                <li><a href="#" className="hover:text-purple-400 transition-colors">Отзывы</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-gray-900 font-semibold mb-4">Поддержка</h4>
-              <ul className="space-y-3 text-gray-600 text-sm">
-                <li><a href="#" className="hover:text-gray-900 transition-colors">Документация</a></li>
-                <li><a href="#" className="hover:text-gray-900 transition-colors">FAQ</a></li>
-                <li><a href="#" className="hover:text-gray-900 transition-colors">Контакты</a></li>
+              <h4 className="text-white font-semibold mb-3">Поддержка</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#" className="hover:text-purple-400 transition-colors">Документация</a></li>
+                <li><a href="#" className="hover:text-purple-400 transition-colors">FAQ</a></li>
+                <li><a href="#" className="hover:text-purple-400 transition-colors">Контакты</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-gray-900 font-semibold mb-4">Социальные сети</h4>
+              <h4 className="text-white font-semibold mb-3">Социальные сети</h4>
               <div className="flex gap-3">
-                {['Instagram', 'Send', 'Music'].map((icon) => (
-                  <a key={icon} href="#" className="w-10 h-10 border-2 border-gray-200 hover:border-gray-900 rounded-xl flex items-center justify-center transition-colors">
-                    <Icon name={icon} size={20} className="text-gray-700" />
-                  </a>
-                ))}
+                <a href="#" className="w-10 h-10 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg flex items-center justify-center transition-colors">
+                  <Icon name="Instagram" size={20} className="text-purple-400" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg flex items-center justify-center transition-colors">
+                  <Icon name="Send" size={20} className="text-purple-400" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg flex items-center justify-center transition-colors">
+                  <Icon name="Music" size={20} className="text-purple-400" />
+                </a>
               </div>
             </div>
           </div>
-          <div className="text-center text-gray-500 text-sm pt-8 border-t border-gray-200">
+          <div className="text-center text-gray-500 text-sm pt-8 border-t border-purple-500/20">
             © 2025 ChatPlace. Все права защищены.
           </div>
         </div>
