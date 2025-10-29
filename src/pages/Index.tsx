@@ -164,7 +164,7 @@ export default function Index() {
       {/* Features Section */}
       <section id="features" className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Что тебя ждет внутри
             </h2>
@@ -173,70 +173,107 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
             {[
               {
                 icon: 'Bot',
-                title: 'ИИ-агент 24/7 для Instagram, Telegram и TikTok',
-                description: 'Работает вместо вас – отвечает подписчикам, вовлекает, продаёт и возвращает клиентов'
+                color: 'from-purple-500 to-violet-600',
+                title: 'ИИ-агент 24/7',
+                subtitle: 'Instagram, Telegram, TikTok',
+                description: 'Работает вместо вас – отвечает подписчикам, вовлекает, продаёт и возвращает клиентов',
+                features: ['Понимает контекст', 'Работает 24/7', 'Автообучение']
               },
               {
                 icon: 'Workflow',
-                title: 'Автоматизации без лимитов',
-                description: 'Запускайте ИИ-агента, создавайте чат-боты, автоворонки, запускайте геймификации и рассылки – без ограничений'
-              },
-              {
-                icon: 'Share2',
-                title: 'Подключение всех соцсетей',
-                description: 'Свяжите свои аккаунты с ChatPlace – и управляйте коммуникацией с одной платформы'
+                color: 'from-pink-500 to-rose-600',
+                title: 'Автоматизации',
+                subtitle: 'Без лимитов',
+                description: 'Создавайте чат-боты, автоворонки, запускайте геймификации и рассылки – без ограничений',
+                features: ['Чат-боты', 'Автоворонки', 'Геймификация']
               },
               {
                 icon: 'BarChart3',
-                title: 'Аналитика и готовые шаблоны',
-                description: 'Следите за результатами, понимайте, что работает – и запускайте кампании в пару кликов с готовыми шаблонами'
-              },
-              {
-                icon: 'HeadphonesIcon',
-                title: 'Поддержка и обучение',
-                description: 'Мы поможем на каждом шаге: гайды, видео-уроки и живая поддержка'
+                color: 'from-orange-500 to-amber-600',
+                title: 'Аналитика',
+                subtitle: 'И готовые шаблоны',
+                description: 'Следите за результатами, понимайте, что работает – запускайте кампании в пару кликов',
+                features: ['Готовые шаблоны', 'Метрики роста', 'A/B тесты']
               }
             ].map((feature, idx) => (
-              <Card key={idx} className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-sm border-purple-500/30 p-6 hover:border-purple-500 transition-all animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className="flex items-start gap-4">
-                  <div className="bg-gradient-to-br from-purple-600 to-pink-600 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon name={feature.icon} size={24} className="text-white" />
+              <Card key={idx} className="relative overflow-hidden bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm border-purple-500/30 p-8 hover:border-purple-500 transition-all group hover:scale-105">
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${feature.color} opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity`}></div>
+                
+                <div className="relative z-10">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                    <Icon name={feature.icon} size={32} className="text-white" />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                      <Icon name="Check" size={20} className="text-green-400" />
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-400">{feature.description}</p>
+                  
+                  <h3 className="text-2xl font-bold text-white mb-2">{feature.title}</h3>
+                  <p className="text-purple-300 text-sm mb-4">{feature.subtitle}</p>
+                  <p className="text-gray-300 mb-6 leading-relaxed">{feature.description}</p>
+                  
+                  <div className="space-y-2">
+                    {feature.features.map((item, i) => (
+                      <div key={i} className="flex items-center gap-2 text-sm text-gray-400">
+                        <Icon name="Check" size={16} className="text-green-400 flex-shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </Card>
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-2xl p-8 border border-purple-500/30">
-            <h3 className="text-2xl font-bold text-white mb-4">Преимущества:</h3>
-            <div className="grid md:grid-cols-2 gap-4 text-gray-300">
-              <div className="flex items-center gap-2">
-                <Icon name="CheckCircle" size={20} className="text-green-400" />
-                <span>Работает в любой нише</span>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-gradient-to-br from-purple-900/50 to-pink-900/50 backdrop-blur border-purple-500/30 p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                  <Icon name="Share2" size={24} className="text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Подключение всех соцсетей</h3>
               </div>
-              <div className="flex items-center gap-2">
-                <Icon name="CheckCircle" size={20} className="text-green-400" />
-                <span>Охваты растут автоматически</span>
+              <p className="text-gray-300 mb-4">Свяжите свои аккаунты с ChatPlace – и управляйте коммуникацией с одной платформы</p>
+              <div className="flex flex-wrap gap-2">
+                {['Instagram', 'Telegram', 'TikTok', 'VK'].map((social, i) => (
+                  <span key={i} className="px-3 py-1 bg-purple-600/30 border border-purple-500/50 rounded-full text-sm text-purple-200">
+                    {social}
+                  </span>
+                ))}
               </div>
-              <div className="flex items-center gap-2">
-                <Icon name="CheckCircle" size={20} className="text-green-400" />
-                <span>ИИ-агент помогает вовлекать аудиторию</span>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-blue-900/50 to-cyan-900/50 backdrop-blur border-blue-500/30 p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
+                  <Icon name="Headphones" size={24} className="text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Поддержка и обучение</h3>
               </div>
-              <div className="flex items-center gap-2">
-                <Icon name="CheckCircle" size={20} className="text-green-400" />
-                <span>Шаблоны проверены тысячами пользователей</span>
+              <p className="text-gray-300 mb-4">Мы поможем на каждом шаге: гайды, видео-уроки и живая поддержка</p>
+              <div className="flex items-center gap-2 text-blue-200">
+                <Icon name="Clock" size={16} />
+                <span className="text-sm">Ответ в течение 24 часов</span>
               </div>
+            </Card>
+          </div>
+
+          <div className="mt-12 bg-gradient-to-r from-purple-950/50 via-pink-950/50 to-orange-950/50 border border-purple-500/20 rounded-3xl p-10">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Преимущества:</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: 'Target', text: 'Работает в любой нише' },
+                { icon: 'TrendingUp', text: 'Охваты растут автоматически' },
+                { icon: 'Users', text: 'ИИ-агент помогает вовлекать аудиторию' },
+                { icon: 'Award', text: 'Шаблоны проверены тысячами пользователей' }
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Icon name={item.icon} size={20} className="text-white" />
+                  </div>
+                  <span className="text-gray-200 text-sm pt-2">{item.text}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
