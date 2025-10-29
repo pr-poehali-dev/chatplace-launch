@@ -114,19 +114,39 @@ export default function Index() {
       {/* Urgency Section */}
       <section className="py-24 px-6 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16 space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
-              Почему важно начать сейчас
-            </h2>
-            <p className="text-2xl text-gray-900 font-semibold">
-              Пока ты сомневаешься – конкуренты уже забирают ТВОЮ аудиторию
-            </p>
-            <div className="space-y-2">
-              <p className="text-lg text-gray-600">Каждый день без ChatPlace это:</p>
-              <div className="flex flex-col gap-2 text-gray-700">
-                <span>❌ упущенные подписчики</span>
-                <span>❌ потерянные заявки</span>
-                <span>❌ меньше доверие аудитории</span>
+          <div className="mb-16">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <div className="inline-block mb-6">
+                <div className="flex items-center gap-3 px-6 py-3 bg-red-50 border-2 border-red-200 rounded-full">
+                  <Icon name="AlertCircle" size={24} className="text-red-600" />
+                  <span className="text-sm font-bold text-red-900 uppercase tracking-wider">Срочно</span>
+                </div>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+                Почему важно начать сейчас
+              </h2>
+              <p className="text-2xl text-gray-900 font-semibold mb-8">
+                Пока ты сомневаешься – конкуренты уже забирают ТВОЮ аудиторию
+              </p>
+            </div>
+
+            <div className="max-w-2xl mx-auto">
+              <div className="bg-white border-2 border-gray-200 rounded-3xl p-8 shadow-lg">
+                <p className="text-center text-lg text-gray-700 font-semibold mb-6">
+                  Каждый день без ChatPlace это:
+                </p>
+                <div className="grid gap-4">
+                  {[
+                    { icon: 'UserMinus', text: 'упущенные подписчики', color: 'bg-red-50 border-red-200 text-red-700' },
+                    { icon: 'XCircle', text: 'потерянные заявки', color: 'bg-orange-50 border-orange-200 text-orange-700' },
+                    { icon: 'TrendingDown', text: 'меньше доверие аудитории', color: 'bg-amber-50 border-amber-200 text-amber-700' }
+                  ].map((item, idx) => (
+                    <div key={idx} className={`flex items-center gap-4 p-4 ${item.color} border-2 rounded-2xl transition-transform hover:scale-105`}>
+                      <Icon name={item.icon} size={24} className="flex-shrink-0" />
+                      <span className="text-base font-semibold">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
