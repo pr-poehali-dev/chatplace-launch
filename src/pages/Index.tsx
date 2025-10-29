@@ -135,34 +135,41 @@ export default function Index() {
             {[
               {
                 icon: 'Brain',
+                emoji: '🧠',
                 title: 'ИИ-агент 24/7',
                 subtitle: 'для Direct и комментариев',
-                description: 'Быстро обучается, понимает контекст и учитывает историю общения – 24/7, даже когда ты оффлайн'
+                description: 'Быстро обучается, понимает контекст и учитывает историю общения – 24/7, даже когда ты оффлайн',
+                gradient: 'from-violet-50 to-purple-50'
               },
               {
                 icon: 'Zap',
+                emoji: '⚡',
                 title: 'Автоматизация ответов',
                 subtitle: '',
-                description: 'Привлекай больше подписчиков с функциями проверки подписки и автоотправки бонусов'
+                description: 'Привлекай больше подписчиков с функциями проверки подписки и автоотправки бонусов',
+                gradient: 'from-blue-50 to-cyan-50'
               },
               {
                 icon: 'LayoutTemplate',
+                emoji: '📋',
                 title: 'Готовые шаблоны',
                 subtitle: '',
-                description: 'Используй сценарии, которые уже приносят подписчиков и настраиваются за 5 минут'
+                description: 'Используй сценарии, которые уже приносят подписчиков и настраиваются за 5 минут',
+                gradient: 'from-amber-50 to-orange-50'
               }
             ].map((card, idx) => (
-              <Card key={idx} className="p-8 border-2 hover:border-gray-900 transition-all duration-300 bg-white animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className="space-y-4">
-                  <div className="w-14 h-14 bg-gray-900 rounded-2xl flex items-center justify-center">
+              <Card key={idx} className={`relative overflow-hidden p-8 border-2 hover:border-gray-900 hover:shadow-xl transition-all duration-300 bg-gradient-to-br ${card.gradient} animate-fade-in group`} style={{ animationDelay: `${idx * 0.1}s` }}>
+                <div className="absolute top-4 right-4 text-5xl opacity-20 group-hover:opacity-30 transition-opacity">{card.emoji}</div>
+                <div className="relative space-y-4">
+                  <div className="w-14 h-14 bg-gray-900 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Icon name={card.icon} size={28} className="text-white" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-1 tracking-tight">{card.title}</h3>
-                    {card.subtitle && <p className="text-gray-600 text-sm mb-3">{card.subtitle}</p>}
-                    <p className="text-gray-600 leading-relaxed">{card.description}</p>
+                    {card.subtitle && <p className="text-gray-600 text-sm mb-3 font-medium">{card.subtitle}</p>}
+                    <p className="text-gray-700 leading-relaxed">{card.description}</p>
                   </div>
-                  <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white font-medium">
+                  <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white font-medium group-hover:translate-y-0 translate-y-1 transition-transform">
                     Активировать аккаунт
                   </Button>
                 </div>
@@ -189,37 +196,42 @@ export default function Index() {
               {
                 icon: 'Bot',
                 title: 'ИИ-агент 24/7 для Instagram, Telegram и TikTok',
-                description: 'Работает вместо вас – отвечает подписчикам, вовлекает, продаёт и возвращает клиентов'
+                description: 'Работает вместо вас – отвечает подписчикам, вовлекает, продаёт и возвращает клиентов',
+                color: 'bg-violet-100 text-violet-900'
               },
               {
                 icon: 'Workflow',
                 title: 'Автоматизации без лимитов',
-                description: 'Запускайте ИИ-агента, создавайте чат-боты, автоворонки, запускайте геймификации и рассылки – без ограничений'
+                description: 'Запускайте ИИ-агента, создавайте чат-боты, автоворонки, запускайте геймификации и рассылки – без ограничений',
+                color: 'bg-blue-100 text-blue-900'
               },
               {
                 icon: 'Share2',
                 title: 'Подключение всех соцсетей',
-                description: 'Свяжите свои аккаунты с ChatPlace – и управляйте коммуникацией с одной платформы'
+                description: 'Свяжите свои аккаунты с ChatPlace – и управляйте коммуникацией с одной платформы',
+                color: 'bg-emerald-100 text-emerald-900'
               },
               {
                 icon: 'BarChart3',
                 title: 'Аналитика и готовые шаблоны',
-                description: 'Следите за результатами, понимайте, что работает – и запускайте кампании в пару кликов с готовыми шаблонами'
+                description: 'Следите за результатами, понимайте, что работает – и запускайте кампании в пару кликов с готовыми шаблонами',
+                color: 'bg-amber-100 text-amber-900'
               },
               {
                 icon: 'Headphones',
                 title: 'Поддержка и обучение',
-                description: 'Мы поможем на каждом шаге: гайды, видео-уроки и живая поддержка'
+                description: 'Мы поможем на каждом шаге: гайды, видео-уроки и живая поддержка',
+                color: 'bg-rose-100 text-rose-900'
               }
             ].map((feature, idx) => (
-              <Card key={idx} className="p-8 border-2 hover:border-gray-900 transition-all bg-white animate-fade-in" style={{ animationDelay: `${idx * 0.05}s` }}>
+              <Card key={idx} className="p-8 border-2 hover:border-gray-900 hover:shadow-lg transition-all bg-white animate-fade-in group" style={{ animationDelay: `${idx * 0.05}s` }}>
                 <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Icon name={feature.icon} size={24} className="text-white" />
+                  <div className={`w-14 h-14 ${feature.color} rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                    <Icon name={feature.icon} size={28} />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight flex items-center gap-2">
-                      <Icon name="Check" size={20} className="text-gray-900" />
+                      <Icon name="Check" size={20} className="text-green-600" />
                       {feature.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">{feature.description}</p>
@@ -259,16 +271,18 @@ export default function Index() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
-              { step: '1', text: 'Настрой за 5 минут прямо с телефона', icon: 'Smartphone' },
-              { step: '2', text: 'Выбери шаблон или создай свой', icon: 'LayoutTemplate' },
-              { step: '3', text: 'Запусти и смотри, как ChatPlace собирает подписчиков и заявки', icon: 'TrendingUp' }
+              { step: '1', text: 'Настрой за 5 минут прямо с телефона', icon: 'Smartphone', bg: 'bg-violet-50', ring: 'ring-violet-200' },
+              { step: '2', text: 'Выбери шаблон или создай свой', icon: 'LayoutTemplate', bg: 'bg-blue-50', ring: 'ring-blue-200' },
+              { step: '3', text: 'Запусти и смотри, как ChatPlace собирает подписчиков и заявки', icon: 'TrendingUp', bg: 'bg-emerald-50', ring: 'ring-emerald-200' }
             ].map((item, idx) => (
-              <div key={idx} className="text-center space-y-6 animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto text-2xl font-bold text-white">
+              <div key={idx} className="text-center space-y-6 animate-fade-in group" style={{ animationDelay: `${idx * 0.1}s` }}>
+                <div className={`relative w-20 h-20 ${item.bg} rounded-3xl flex items-center justify-center mx-auto text-3xl font-bold text-gray-900 ring-4 ${item.ring} group-hover:scale-110 transition-transform`}>
                   {item.step}
+                  <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-xl shadow-lg flex items-center justify-center border-2 border-gray-100">
+                    <Icon name={item.icon} size={20} className="text-gray-700" />
+                  </div>
                 </div>
-                <Icon name={item.icon} size={48} className="text-gray-400 mx-auto" />
-                <p className="text-lg text-gray-700 leading-relaxed">{item.text}</p>
+                <p className="text-lg text-gray-700 leading-relaxed font-medium">{item.text}</p>
               </div>
             ))}
           </div>
