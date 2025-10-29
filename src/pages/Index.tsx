@@ -107,18 +107,52 @@ export default function Index() {
       {/* Urgency Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-transparent via-purple-900/20 to-transparent">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Почему важно начать сейчас
-            </h2>
-            <p className="text-2xl text-orange-400 font-semibold mb-4">
-              Пока ты сомневаешься – конкуренты уже забирают ТВОЮ аудиторию
-            </p>
-            <p className="text-xl text-gray-400">Каждый день без ChatPlace это:</p>
-            <div className="flex flex-wrap justify-center gap-4 mt-4 text-lg text-red-400">
-              <span>❌ упущенные подписчики</span>
-              <span>❌ потерянные заявки</span>
-              <span>❌ меньше доверие аудитории</span>
+          <div className="mb-12">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative bg-gradient-to-br from-red-950/60 to-orange-950/60 backdrop-blur-xl border-2 border-red-500/40 rounded-3xl p-10 overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZjAwMDAiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTIwIDIwYzAtNS41MjMgNC40NzctMTAgMTAtMTBzMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTAtMTAtNC40NzctMTAtMTB6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40"></div>
+                
+                <div className="relative z-10 space-y-6">
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center animate-pulse">
+                      <Icon name="AlertTriangle" size={28} className="text-white" />
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-black text-white">
+                      Почему важно начать сейчас
+                    </h2>
+                  </div>
+
+                  <div className="bg-black/40 border-l-4 border-orange-500 rounded-2xl p-6">
+                    <p className="text-2xl md:text-3xl text-orange-300 font-bold leading-tight">
+                      Пока ты сомневаешься – конкуренты уже забирают ТВОЮ аудиторию
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 pt-4">
+                    <p className="text-center text-lg text-gray-300 font-semibold mb-4">
+                      Каждый день без ChatPlace это:
+                    </p>
+                    
+                    <div className="grid gap-3">
+                      {[
+                        { icon: 'Users', text: 'упущенные подписчики', accent: 'from-red-600 to-red-700' },
+                        { icon: 'TrendingDown', text: 'потерянные заявки', accent: 'from-orange-600 to-red-600' },
+                        { icon: 'ShieldAlert', text: 'меньше доверие аудитории', accent: 'from-amber-600 to-orange-600' }
+                      ].map((item, idx) => (
+                        <div key={idx} className="group flex items-center gap-4 bg-black/30 backdrop-blur border border-red-500/30 rounded-xl p-4 hover:border-red-500 hover:bg-black/50 transition-all">
+                          <div className={`w-10 h-10 bg-gradient-to-br ${item.accent} rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                            <Icon name={item.icon} size={20} className="text-white" />
+                          </div>
+                          <span className="text-lg font-semibold text-red-300 group-hover:text-red-200 transition-colors">{item.text}</span>
+                          <div className="ml-auto">
+                            <Icon name="X" size={24} className="text-red-500" />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
